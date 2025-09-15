@@ -21,14 +21,10 @@ const Hero = () => {
           {/* Left Content */}
           <div className="space-y-8 order-2 lg:order-1">
             <div className="space-y-4">
-              <Badge variant="outline" className="px-3 py-1 text-sm font-medium border-blue-200 text-blue-700">
-                Available for Research Opportunities
-              </Badge>
-              
               <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 leading-tight">
                 Hi, I'm{' '}
                 <span className="bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
-                  Viraj
+                  Viraj Dalsania
                 </span>
               </h1>
               
