@@ -10,21 +10,24 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { Toaster } from "./components/ui/toaster";
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Education />
-      <Experience />
-      <Contact />
-      <Footer />
-    </div>
+    <ErrorBoundary>
+      <div className="min-h-screen">
+        <Header />
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Education />
+        <Experience />
+        <Contact />
+        <Footer />
+      </div>
+    </ErrorBoundary>
   );
 };
 
