@@ -233,9 +233,6 @@ class PortfolioAPITester:
         self.test_portfolio_endpoints()
         self.test_contact_form()
         self.test_cors_configuration()
-        
-        # Generate summary
-        self.generate_summary()
     
     def generate_summary(self):
         """Generate test summary"""
