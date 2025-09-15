@@ -112,14 +112,6 @@ const Hero = () => {
                 />
               </div>
               
-              {/* Floating Badge */}
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-lg shadow-lg p-4 border border-slate-200">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">9.69</div>
-                  <div className="text-xs text-slate-500">CGPA</div>
-                </div>
-              </div>
-              
               {/* Background Decoration */}
               <div className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-blue-400 to-emerald-400 rounded-full opacity-20 animate-pulse"></div>
               <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-full opacity-20 animate-pulse delay-1000"></div>
