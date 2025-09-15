@@ -2,9 +2,13 @@ import React from 'react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { MapPin, Mail, Phone, Github, Linkedin, ArrowRight } from 'lucide-react';
-import { personalInfo } from '../data/mockData';
+import { usePersonalInfo } from '../hooks/usePortfolioData';
+import LoadingSpinner from './LoadingSpinner';
+import { ErrorMessage } from './ErrorBoundary';
 
 const Hero = () => {
+  const { data: personalInfo, loading, error } = usePersonalInfo();
+
   const handleContact = () => {
     document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
   };
@@ -12,6 +16,10 @@ const Hero = () => {
   const handleProjects = () => {
     document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' });
   };
+
+  if (loading) return <LoadingSpinner size="lg" message="Loading personal information..." />;
+  if (error) return <ErrorMessage error={error} />;
+  if (!personalInfo) return <ErrorMessage error="No personal information available" />;
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 pt-20">
@@ -24,7 +32,7 @@ const Hero = () => {
               <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 leading-tight">
                 Hi, I'm{' '}
                 <span className="bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
-                  Viraj Dalsania
+                  {personalInfo.name}
                 </span>
               </h1>
               
@@ -107,7 +115,7 @@ const Hero = () => {
               <div className="w-80 h-96 lg:w-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-100 to-emerald-100">
                 <img 
                   src={personalInfo.profileImage}
-                  alt="Viraj Dalsania"
+                  alt={personalInfo.name}
                   className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                 />
               </div>
