@@ -210,12 +210,12 @@ export const experience = [
 ];
 
 export const achievements = [
-  "Outstanding Academic Performance: 9.69 CGPA in Bachelor's degree",
+  "Outstanding Academic Performance with distinction in Bachelor's degree",
   "National Silver Medalist - Reliance Drishti Essay Writing Competition",
   "Elite Certificate (Top 1%) - NPTEL Privacy and Security course",
   "District Level Table Tennis Player",
-  "Multiple IBM Data Science Certifications",
-  "AWS Cloud Certification"
+  "Multiple professional certifications in data science and cloud computing",
+  "Successfully completed comprehensive ML/AI projects with practical applications"
 ];
 
 export const languages = [
