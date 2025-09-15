@@ -93,10 +93,6 @@ const Skills = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-emerald-400">9.69</div>
-                <div className="text-sm text-slate-400">Academic CGPA</div>
-              </div>
-              <div className="text-center">
                 <div className="text-3xl font-bold text-blue-400">8+</div>
                 <div className="text-sm text-slate-400">IBM Certifications</div>
               </div>
@@ -105,8 +101,12 @@ const Skills = () => {
                 <div className="text-sm text-slate-400">Major Projects</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-orange-400">2+</div>
-                <div className="text-sm text-slate-400">Years Experience</div>
+                <div className="text-3xl font-bold text-orange-400">1</div>
+                <div className="text-sm text-slate-400">Professional Internship</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-emerald-400">M.Sc</div>
+                <div className="text-sm text-slate-400">Current Studies</div>
               </div>
             </div>
           </div>
