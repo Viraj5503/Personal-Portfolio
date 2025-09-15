@@ -284,7 +284,10 @@ class PortfolioAPITester:
 def main():
     """Main function to run the tests"""
     tester = PortfolioAPITester()
-    summary = tester.run_all_tests()
+    tester.run_all_tests()
+    
+    # Generate summary and get results
+    summary = tester.generate_summary()
     
     # Return exit code based on test results
     if summary['failed_tests'] > 0:
