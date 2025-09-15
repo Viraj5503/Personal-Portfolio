@@ -111,6 +111,33 @@ const Skills = () => {
             </div>
           </div>
         </Card>
+
+        {/* Soft Skills Section */}
+        <Card className="mt-8 p-8 shadow-lg border-0 bg-gradient-to-br from-blue-50 to-emerald-50">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-slate-800 mb-4">Personal Attributes</h3>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Strong interpersonal and professional skills developed through academic projects, internship experience, and continuous learning
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {[
+              { skill: 'Collaborative', icon: '🤝', color: 'from-blue-500 to-blue-600' },
+              { skill: 'Hard Working', icon: '💪', color: 'from-emerald-500 to-emerald-600' },
+              { skill: 'Team Player', icon: '👥', color: 'from-purple-500 to-purple-600' },
+              { skill: 'Time Management', icon: '⏰', color: 'from-orange-500 to-orange-600' },
+              { skill: 'Creative', icon: '💡', color: 'from-pink-500 to-pink-600' },
+              { skill: 'Adaptable', icon: '🔄', color: 'from-indigo-500 to-indigo-600' }
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div className={`w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center text-white text-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200`}>
+                  {item.icon}
+                </div>
+                <h4 className="font-medium text-slate-800 text-sm">{item.skill}</h4>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </section>
   );
