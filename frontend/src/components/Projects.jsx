@@ -175,10 +175,6 @@ const Projects = () => {
                     <Github className="w-4 h-4" />
                     View Code
                   </Button>
-                  <Button className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700">
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </Button>
                 </div>
               </Card>
             </div>
