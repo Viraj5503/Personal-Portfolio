@@ -146,8 +146,8 @@ const Education = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="text-center p-4 bg-white/10 rounded-lg">
-                <div className="text-2xl font-bold text-blue-400">Outstanding</div>
-                <div className="text-sm text-slate-400">Academic Distinction</div>
+                <div className="text-2xl font-bold text-blue-400">9.69/10</div>
+                <div className="text-sm text-slate-400">Bachelor's CGPA</div>
               </div>
               <div className="text-center p-4 bg-white/10 rounded-lg">
                 <div className="text-2xl font-bold text-emerald-400">8+</div>
