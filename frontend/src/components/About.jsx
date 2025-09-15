@@ -60,7 +60,7 @@ const About = () => {
                   'Explainable AI',
                   'Time Series Forecasting',
                   'Quantitative Finance',
-                  'IoT Data Analytics'
+                  'Data Analytics and Visualization'
                 ].map((interest, index) => (
                   <Badge key={index} variant="secondary" className="px-3 py-2 text-sm bg-slate-100 text-slate-700 justify-center">
                     {interest}
