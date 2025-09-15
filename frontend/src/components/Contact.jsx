@@ -149,10 +149,10 @@ const Contact = () => {
               <div className="space-y-3">
                 {[
                   'Research Collaborations',
-                  'Data Science Internships',
+                  'AI, Analytics & Software Internships',
                   'AI/ML Project Discussions',
                   'Academic Partnerships',
-                  'Technical Consulting'
+                  'Student Jobs (Werkstudent)'
                 ].map((opportunity, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
