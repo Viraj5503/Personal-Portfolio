@@ -110,8 +110,8 @@ const Experience = () => {
             {/* Stats Cards */}
             <div className="grid grid-cols-2 gap-4">
               <Card className="p-6 shadow-lg border-0 text-center bg-gradient-to-br from-blue-500 to-blue-600 text-white">
-                <div className="text-3xl font-bold mb-2">9.69</div>
-                <div className="text-sm opacity-90">Bachelor's CGPA</div>
+                <div className="text-3xl font-bold mb-2">Outstanding</div>
+                <div className="text-sm opacity-90">Academic Performance</div>
               </Card>
               
               <Card className="p-6 shadow-lg border-0 text-center bg-gradient-to-br from-emerald-500 to-emerald-600 text-white">
