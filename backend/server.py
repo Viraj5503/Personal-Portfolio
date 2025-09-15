@@ -37,7 +37,7 @@ async def root():
 async def health_check():
     try:
         # Test database connection
-        await db.admin.command('ping')
+        await client.admin.command('ping')
         return {
             "status": "healthy",
             "message": "API and database are running properly",
