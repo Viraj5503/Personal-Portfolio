@@ -142,6 +142,10 @@ class PortfolioAPITester:
         result = self.test_endpoint("/api/portfolio/projects/999")
         if result['status_code'] == 404:
             print("   ✅ Correctly returned 404 for invalid project ID")
+            # Mark this as successful since 404 is the expected behavior
+            if self.test_results:
+                self.test_results[-1]['success'] = True
+                self.test_results[-1]['details'] = "Correctly returned 404 for invalid project ID"
         
         # Test skills
         result = self.test_endpoint("/api/portfolio/skills")
