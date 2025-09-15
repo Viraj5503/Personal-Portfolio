@@ -6,9 +6,13 @@ import { Textarea } from './ui/textarea';
 import { Badge } from './ui/badge';
 import { useToast } from '../hooks/use-toast';
 import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from 'lucide-react';
-import { personalInfo } from '../data/mockData';
+import { usePersonalInfo } from '../hooks/usePortfolioData';
+import { contactApi } from '../services/api';
+import LoadingSpinner from './LoadingSpinner';
+import { ErrorMessage } from './ErrorBoundary';
 
 const Contact = () => {
+  const { data: personalInfo, loading, error } = usePersonalInfo();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,16 +33,28 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Mock form submission
-    setTimeout(() => {
+    try {
+      const response = await contactApi.submitContactForm(formData);
       toast({
         title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon!",
+        description: response.message || "Thank you for reaching out. I'll get back to you soon!",
       });
       setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Contact form submission error:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
+
+  if (loading) return <LoadingSpinner size="lg" message="Loading contact information..." />;
+  if (error) return <ErrorMessage error={error} />;
+  if (!personalInfo) return <ErrorMessage error="No contact information available" />;
 
   const contactMethods = [
     {
