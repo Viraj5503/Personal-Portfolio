@@ -149,7 +149,7 @@ const Contact = () => {
               <div className="space-y-3">
                 {[
                   'Research Collaborations',
-                  'AI, Analytics & Software Internships',
+                  'Internships',
                   'AI/ML Project Discussions',
                   'Academic Partnerships',
                   'Student Jobs (Werkstudent)'
