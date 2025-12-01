@@ -13,7 +13,7 @@ import os
 import sys
 
 # Get backend URL from frontend environment
-BACKEND_URL = "https://viraj-analytics.preview.emergentagent.com"
+BACKEND_URL = "http://localhost:5001"
 
 class PortfolioAPITester:
     def __init__(self):

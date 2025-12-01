@@ -39,7 +39,8 @@ export const projects = [
     ],
     technologies: ["Python", "LightGBM", "Scikit-learn", "Pandas", "Optuna", "Time-series Analysis", "Quantitative Finance"],
     skills: ["Quantitative Finance", "Algorithmic Trading", "Machine Learning", "Time Series Analysis", "Feature Engineering"],
-    category: "Machine Learning"
+    category: "Machine Learning",
+    repoUrl: "https://github.com/Viraj5503/Implementation-of-a-LightGBM-based-Long-Short-Trading-Strategy-for-Indian-Stocks"
   },
   {
     id: 2,
@@ -87,7 +88,8 @@ export const projects = [
     ],
     technologies: ["React.js", "Redux Toolkit", "Node.js", "Express.js", "MySQL", "JWT", "Material-UI"],
     skills: ["Full-Stack Development", "Database Design", "Authentication Systems"],
-    category: "Web Development"
+    category: "Web Development",
+    repoUrl: "https://github.com/Viraj5503/Employee_website"
   }
 ];
 

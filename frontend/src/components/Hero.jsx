@@ -22,37 +22,37 @@ const Hero = () => {
   if (!personalInfo) return <ErrorMessage error="No personal information available" />;
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 pt-20">
+    <section className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 dark:from-slate-900 dark:via-blue-900 dark:to-slate-800 pt-20 transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           
           {/* Left Content */}
           <div className="space-y-8 order-2 lg:order-1">
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-bold text-slate-800 dark:text-white leading-tight transition-colors duration-300">
                 Hi, I'm{' '}
-                <span className="bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400 bg-clip-text text-transparent">
                   {personalInfo.name}
                 </span>
               </h1>
               
-              <p className="text-xl lg:text-2xl text-slate-600 leading-relaxed">
+              <p className="text-xl lg:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed transition-colors duration-300">
                 {personalInfo.title}
               </p>
               
-              <p className="text-lg text-slate-500 leading-relaxed max-w-lg">
+              <p className="text-lg text-slate-500 dark:text-slate-400 leading-relaxed max-w-lg transition-colors duration-300">
                 {personalInfo.subtitle}
               </p>
             </div>
 
             {/* Key Info */}
-            <div className="flex flex-wrap gap-4 text-sm text-slate-600">
+            <div className="flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-400 transition-colors duration-300">
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-blue-600" />
+                <MapPin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                 <span>{personalInfo.location}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-emerald-600" />
+                <Mail className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>Available for collaboration</span>
               </div>
             </div>
@@ -61,7 +61,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={handleContact}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 text-lg font-medium transition-all duration-200 hover:shadow-lg hover:scale-105"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 text-white px-8 py-3 text-lg font-medium transition-all duration-200 hover:shadow-lg hover:scale-105"
               >
                 Get In Touch
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -70,7 +70,7 @@ const Hero = () => {
               <Button 
                 onClick={handleProjects}
                 variant="outline" 
-                className="border-slate-300 text-slate-700 hover:border-blue-600 hover:text-blue-600 px-8 py-3 text-lg font-medium transition-all duration-200 hover:shadow-md"
+                className="border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 px-8 py-3 text-lg font-medium transition-all duration-200 hover:shadow-md dark:bg-slate-800/50"
               >
                 View Projects
               </Button>
@@ -82,7 +82,7 @@ const Hero = () => {
                 href={personalInfo.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 text-blue-600 hover:text-blue-700"
+                className="p-3 rounded-full bg-white dark:bg-slate-800 shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -90,19 +90,19 @@ const Hero = () => {
                 href={personalInfo.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 text-slate-700 hover:text-slate-800"
+                className="p-3 rounded-full bg-white dark:bg-slate-800 shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a 
                 href={`mailto:${personalInfo.email}`}
-                className="p-3 rounded-full bg-white shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 text-emerald-600 hover:text-emerald-700"
+                className="p-3 rounded-full bg-white dark:bg-slate-800 shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300"
               >
                 <Mail className="w-5 h-5" />
               </a>
               <a 
                 href={`tel:${personalInfo.phone}`}
-                className="p-3 rounded-full bg-white shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 text-slate-600 hover:text-slate-700"
+                className="p-3 rounded-full bg-white dark:bg-slate-800 shadow-md hover:shadow-lg hover:scale-110 transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"
               >
                 <Phone className="w-5 h-5" />
               </a>
@@ -112,7 +112,7 @@ const Hero = () => {
           {/* Right Content - Profile Image */}
           <div className="order-1 lg:order-2 flex justify-center">
             <div className="relative">
-              <div className="w-80 h-96 lg:w-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-100 to-emerald-100">
+              <div className="w-80 h-96 lg:w-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl dark:shadow-2xl dark:shadow-blue-500/20 bg-gradient-to-br from-blue-100 to-emerald-100 dark:from-blue-900 dark:to-emerald-900 transition-all duration-300">
                 <img 
                   src={personalInfo.profileImage}
                   alt={personalInfo.name}
@@ -121,8 +121,8 @@ const Hero = () => {
               </div>
               
               {/* Background Decoration */}
-              <div className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-blue-400 to-emerald-400 rounded-full opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-full opacity-20 animate-pulse delay-1000"></div>
+              <div className="absolute -top-8 -left-8 w-24 h-24 bg-gradient-to-br from-blue-400 to-emerald-400 rounded-full opacity-20 animate-pulse dark:opacity-10"></div>
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-full opacity-20 animate-pulse delay-1000 dark:opacity-10"></div>
             </div>
           </div>
         </div>

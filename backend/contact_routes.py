@@ -1,15 +1,74 @@
-from fastapi import APIRouter, HTTPException, Depends
+# backend/contact_routes.py
+
+from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
 from motor.motor_asyncio import AsyncIOMotorClient
 from models import ContactSubmission, ContactSubmissionCreate
 import logging
 import os
+from dotenv import load_dotenv
+
+# --- NEW IMPORTS for sending email ---
+import smtplib
+import ssl
+from email.message import EmailMessage
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Create router for contact endpoints
 contact_router = APIRouter(prefix="/api/contact", tags=["contact"])
 
 logger = logging.getLogger(__name__)
 
-# Database dependency (using the same client from server.py)
+# --- NEW FUNCTION: To send the email notification ---
+def send_email_notification(submission: ContactSubmission):
+    """
+    Constructs and sends an email notification for a new contact form submission.
+    """
+    # Get email credentials from environment variables
+    email_sender = os.getenv("EMAIL_HOST_USER")
+    email_password = os.getenv("EMAIL_HOST_PASSWORD")
+    email_receiver = email_sender  # Send the notification to yourself
+
+    if not email_sender or not email_password:
+        logger.error("Email credentials are not configured in the .env file.")
+        return # Silently fail if not configured, to not break the API for the user
+
+    # Create the email content
+    subject = f"New Portfolio Contact: {submission.subject}"
+    body = f"""
+    You have received a new message from your portfolio contact form.
+
+    From: {submission.name}
+    Email: {submission.email}
+    Subject: {submission.subject}
+    -----------------------------------
+
+    Message:
+    {submission.message}
+    """
+
+    em = EmailMessage()
+    em['From'] = email_sender
+    em['To'] = email_receiver
+    em['Subject'] = subject
+    em.set_content(body)
+
+    # Add SSL (layer of security)
+    context = ssl.create_default_context()
+
+    try:
+        # Log in and send the email
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+            smtp.login(email_sender, email_password)
+            smtp.sendmail(email_sender, email_receiver, em.as_string())
+        logger.info(f"Email notification sent successfully for submission ID: {submission.id}")
+    except Exception as e:
+        logger.error(f"Failed to send email notification for submission ID {submission.id}: {e}")
+        # We log the error but do not raise an HTTP exception,
+        # because the user's message was successfully saved.
+
+# Database dependency
 async def get_database():
     from server import db
     return db
@@ -17,6 +76,7 @@ async def get_database():
 @contact_router.post("/", response_model=dict)
 async def submit_contact_form(
     submission: ContactSubmissionCreate,
+    background_tasks: BackgroundTasks, # Add BackgroundTasks dependency
     db = Depends(get_database)
 ):
     """Handle contact form submission"""
@@ -29,6 +89,12 @@ async def submit_contact_form(
         
         if result.inserted_id:
             logger.info(f"Contact form submitted successfully: {contact_submission.id}")
+
+            # --- MODIFIED PART ---
+            # Add the email sending task to the background.
+            # This prevents the user from having to wait for the email to send.
+            background_tasks.add_task(send_email_notification, contact_submission)
+            
             return {
                 "success": True,
                 "message": "Thank you for your message. I'll get back to you soon!",
@@ -41,6 +107,7 @@ async def submit_contact_form(
         logger.error(f"Error submitting contact form: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
+# ... (The rest of your file with GET and PUT routes can remain the same) ...
 @contact_router.get("/submissions", response_model=list)
 async def get_contact_submissions(
     limit: int = 50,

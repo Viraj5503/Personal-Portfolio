@@ -14,45 +14,45 @@ const Education = () => {
   }, {});
 
   return (
-    <section id="education" className="py-20 bg-gradient-to-br from-blue-50 to-emerald-50">
+    <section id="education" className="py-20 bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-blue-200 text-blue-700 mb-4">
+          <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-400 mb-4 transition-colors duration-300">
             Academic Journey
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 dark:text-white mb-6 transition-colors duration-300">
             Education &{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400 bg-clip-text text-transparent">
               Certifications
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed transition-colors duration-300">
             Academic excellence combined with continuous learning through professional certifications
           </p>
         </div>
 
         {/* Education Timeline */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">Academic Background</h3>
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-8 text-center transition-colors duration-300">Academic Background</h3>
           <div className="space-y-8">
             {education.map((edu, index) => (
-              <Card key={index} className={`p-8 shadow-lg border-0 ${
+              <Card key={index} className={`p-8 shadow-lg border-0 transition-colors duration-300 ${
                 edu.status === 'current' 
-                  ? 'bg-gradient-to-r from-blue-600 to-emerald-600 text-white' 
-                  : 'bg-white'
+                  ? 'bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-700 dark:to-emerald-700 text-white' 
+                  : 'bg-white dark:bg-slate-800'
               }`}>
                 <div className="flex flex-col lg:flex-row lg:items-center gap-6">
                   <div className={`p-4 rounded-lg ${
                     edu.status === 'current' 
                       ? 'bg-white/20' 
-                      : 'bg-gradient-to-br from-blue-500 to-emerald-500'
+                      : 'bg-gradient-to-br from-blue-500 to-emerald-500 dark:from-blue-600 dark:to-emerald-600'
                   } text-white flex-shrink-0`}>
                     <GraduationCap className="w-8 h-8" />
                   </div>
                   
                   <div className="flex-1 space-y-3">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
-                      <h4 className="text-xl font-bold">{edu.degree}</h4>
+                      <h4 className={`text-xl font-bold ${edu.status === 'current' ? 'text-white' : 'text-slate-800 dark:text-white'} transition-colors duration-300`}>{edu.degree}</h4>
                       {edu.status === 'current' && (
                         <Badge className="bg-white/20 text-white border-white/30 w-fit">
                           Current
@@ -63,22 +63,22 @@ const Education = () => {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
                         <GraduationCap className="w-4 h-4 opacity-70" />
-                        <span className="font-medium">{edu.institution}</span>
+                        <span className={`font-medium ${edu.status === 'current' ? 'text-white' : 'text-slate-800 dark:text-white'} transition-colors duration-300`}>{edu.institution}</span>
                       </div>
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">
                           <MapPin className="w-4 h-4 opacity-70" />
-                          <span className="text-sm">{edu.location}</span>
+                          <span className={`text-sm ${edu.status === 'current' ? 'text-white' : 'text-slate-600 dark:text-slate-400'} transition-colors duration-300`}>{edu.location}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4 opacity-70" />
-                          <span className="text-sm">{edu.duration}</span>
+                          <span className={`text-sm ${edu.status === 'current' ? 'text-white' : 'text-slate-600 dark:text-slate-400'} transition-colors duration-300`}>{edu.duration}</span>
                         </div>
                       </div>
                     </div>
                     
-                    <p className={`text-sm ${
-                      edu.status === 'current' ? 'text-white/90' : 'text-slate-600'
+                    <p className={`text-sm transition-colors duration-300 ${
+                      edu.status === 'current' ? 'text-white/90' : 'text-slate-600 dark:text-slate-400'
                     }`}>
                       {edu.details}
                     </p>
@@ -91,35 +91,35 @@ const Education = () => {
 
         {/* Certifications */}
         <div>
-          <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">Professional Certifications</h3>
+          <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-8 text-center transition-colors duration-300">Professional Certifications</h3>
           <div className="grid lg:grid-cols-3 gap-8">
             {Object.entries(groupedCertifications).map(([category, certs]) => (
-              <Card key={category} className="p-6 shadow-lg border-0 bg-white">
+              <Card key={category} className="p-6 shadow-lg border-0 bg-white dark:bg-slate-800 transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-emerald-500 text-white">
-                    <Award className="w-5 h-5" />
+                  <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-emerald-500">
+                    <Award className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="text-lg font-bold text-slate-800">{category}</h4>
+                  <h4 className="text-lg font-bold text-slate-800 dark:text-white transition-colors duration-300">{category}</h4>
                 </div>
                 
                 <div className="space-y-4">
                   {certs.map((cert, index) => (
-                    <div key={index} className="p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
+                    <div key={index} className="p-4 bg-slate-50 dark:bg-slate-700 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">
                       <div className="flex justify-between items-start gap-2 mb-2">
-                        <h5 className="font-medium text-slate-800 text-sm leading-tight">
+                        <h5 className="font-medium text-slate-800 dark:text-white text-sm leading-tight transition-colors duration-300">
                           {cert.title}
                         </h5>
-                        <Badge variant="secondary" className="text-xs flex-shrink-0">
+                        <Badge variant="secondary" className="text-xs dark:bg-slate-600 dark:text-slate-300 flex-shrink-0 transition-colors duration-300">
                           {cert.date}
                         </Badge>
                       </div>
                       
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-slate-600">{cert.issuer}</span>
+                        <span className="text-xs text-slate-600 dark:text-slate-400 transition-colors duration-300">{cert.issuer}</span>
                         {cert.details && (
                           <div className="flex items-center gap-1">
                             <Star className="w-3 h-3 text-yellow-500" />
-                            <span className="text-xs text-slate-600">{cert.details}</span>
+                            <span className="text-xs text-slate-600 dark:text-slate-400 transition-colors duration-300">{cert.details}</span>
                           </div>
                         )}
                       </div>
@@ -132,7 +132,7 @@ const Education = () => {
         </div>
 
         {/* Achievement Highlight */}
-        <Card className="mt-12 p-8 shadow-lg border-0 bg-gradient-to-r from-slate-800 to-slate-900 text-white">
+        <Card className="mt-12 p-8 shadow-lg border-0 bg-gradient-to-r from-slate-800 to-slate-900 dark:from-slate-950 dark:to-slate-900 text-white transition-colors duration-300">
           <div className="text-center space-y-4">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Award className="w-8 h-8 text-yellow-400" />
