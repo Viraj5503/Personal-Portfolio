@@ -49,9 +49,13 @@ def send_email_notification(submission: ContactSubmission):
     """
 
     em = EmailMessage()
-    em['From'] = email_sender
+    # Use the site email as the actual SMTP sender (helps with SPF/DKIM),
+    # but present the submitter's name in the From display and set Reply-To
+    # so you can reply directly to the person who filled the form.
+    em['From'] = f"{submission.name} <{email_sender}>"
     em['To'] = email_receiver
     em['Subject'] = subject
+    em['Reply-To'] = submission.email
     em.set_content(body)
 
     # Add SSL (layer of security)

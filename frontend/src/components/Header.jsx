@@ -56,8 +56,8 @@ const Header = () => {
 
             {/* Resume Button */}
             <a
-              href="/assets/Viraj_europassCV_mastersStart.pdf"
-              download="Viraj_europassCV_mastersStart.pdf"
+              href="/assets/Viraj_Suresh_Dalsania.pdf"
+              download="Viraj_Suresh_Dalsania.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -107,8 +107,8 @@ const Header = () => {
                 </button>
               ))}
               <a
-                href="/assets/Viraj_europassCV_mastersStart.pdf"
-                download="Viraj_europassCV_mastersStart.pdf"
+                href="/assets/Viraj_Suresh_Dalsania.pdf"
+                download="Viraj_Suresh_Dalsania.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >
