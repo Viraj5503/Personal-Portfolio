@@ -63,7 +63,7 @@ def send_email_notification(submission: ContactSubmission):
 
     try:
         # Log in and send the email
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 587, context=context) as smtp:
             smtp.login(email_sender, email_password)
             smtp.sendmail(email_sender, email_receiver, em.as_string())
         logger.info(f"Email notification sent successfully for submission ID: {submission.id}")
@@ -109,7 +109,7 @@ async def submit_contact_form(
             
     except Exception as e:
         logger.error(f"Error submitting contact form: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail="Internal server error ")
 
 # ... (The rest of your file with GET and PUT routes can remain the same) ...
 @contact_router.get("/submissions", response_model=list)

@@ -188,9 +188,9 @@ LANGUAGES = [
 # Achievements
 ACHIEVEMENTS = [
     "Outstanding Academic Performance with distinction in Bachelor's degree",
-    "National Silver Medalist - Reliance Drishti Essay Writing Competition",
-    "Elite Certificate (Top 1%) - NPTEL Privacy and Security course",
-    "District Level Table Tennis Player",
-    "Multiple professional certifications in data science and cloud computing",
-    "Successfully completed comprehensive ML/AI projects with practical applications"
+  "Multiple professional certifications in data science",
+  "Successfully completed comprehensive ML/AI projects with practical applications",
+  "National Silver Medalist - Reliance Drishti Essay Writing Competition",
+  "Elite Certificate (Top 1%) - NPTEL Privacy and Security course",
+  "District Level Table Tennis Player"
 ]

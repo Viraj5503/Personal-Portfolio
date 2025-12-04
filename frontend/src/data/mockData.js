@@ -213,11 +213,11 @@ export const experience = [
 
 export const achievements = [
   "Outstanding Academic Performance with distinction in Bachelor's degree",
+  "Multiple professional certifications in data science",
+  "Successfully completed comprehensive ML/AI projects with practical applications",
   "National Silver Medalist - Reliance Drishti Essay Writing Competition",
   "Elite Certificate (Top 1%) - NPTEL Privacy and Security course",
-  "District Level Table Tennis Player",
-  "Multiple professional certifications in data science and cloud computing",
-  "Successfully completed comprehensive ML/AI projects with practical applications"
+  "District Level Table Tennis Player"
 ];
 
 export const languages = [
