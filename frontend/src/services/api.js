@@ -21,6 +21,7 @@ import {
 } from '../data/mockData';
 
 const FORMSPREE_ENDPOINT = process.env.REACT_APP_FORMSPREE_ENDPOINT || '';
+export const isFormspreeConfigured = Boolean(FORMSPREE_ENDPOINT);
 
 // Portfolio API (returns local mock data)
 export const portfolioApi = {
@@ -40,7 +41,7 @@ export const portfolioApi = {
 export const contactApi = {
   submitContactForm: async (formData) => {
     if (!FORMSPREE_ENDPOINT) {
-      throw new Error('Formspree endpoint not configured. Set REACT_APP_FORMSPREE_ENDPOINT in your environment.');
+      throw new Error('Formspree endpoint not configured. Set REACT_APP_FORMSPREE_ENDPOINT in your environment. See README.');
     }
 
     // Formspree accepts JSON or form-encoded data. We'll send JSON.

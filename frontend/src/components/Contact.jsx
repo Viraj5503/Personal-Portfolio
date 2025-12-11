@@ -9,7 +9,7 @@ import { Badge } from './ui/badge';
 import { useToast } from '../hooks/use-toast';
 import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from 'lucide-react';
 import { usePersonalInfo } from '../hooks/usePortfolioData';
-import { contactApi } from '../services/api'; // This is correct
+import { contactApi, isFormspreeConfigured } from '../services/api'; // This is correct
 import LoadingSpinner from './LoadingSpinner';
 import { ErrorMessage } from './ErrorBoundary';
 
@@ -34,12 +34,15 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
-      // --- FIX 1: Pass the formData directly to the API function ---
-      // Your backend expects a JSON body, and this function in api.js will handle it.
+      if (!isFormspreeConfigured) {
+        // Defensive: don't attempt to submit if endpoint is missing.
+        throw new Error('Formspree endpoint not configured. Set REACT_APP_FORMSPREE_ENDPOINT in your environment (see README).');
+      }
+
+      // Pass the formData directly to the API function (Formspree)
       const response = await contactApi.submitContactForm(formData);
-      
+
       toast({
         title: "Message Sent! 🎉",
         description: response.message || "Thank you for reaching out. I'll get back to you soon!",
@@ -48,10 +51,10 @@ const Contact = () => {
 
     } catch (error) {
       console.error('Contact form submission error:', error);
-      
-      // --- FIX 2: Provide more specific error feedback to the user ---
-      const errorMessage = error.response?.data?.detail || "Failed to send message. Please try again later.";
-      
+
+      // Prefer thrown or response messages
+      const errorMessage = error?.response?.data?.detail || error?.message || "Failed to send message. Please try again later.";
+
       toast({
         title: "Error",
         description: errorMessage,
@@ -179,6 +182,13 @@ const Contact = () => {
           <Card className="p-8 shadow-lg border-0 bg-white dark:bg-slate-800 transition-colors duration-300">
             <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 transition-colors duration-300">Send a Message</h3>
             
+            {/* If Formspree is not configured, show an inline notice and disable submit */}
+            {!isFormspreeConfigured && (
+              <div className="mb-4 p-4 rounded-md bg-yellow-50 dark:bg-yellow-900 text-yellow-800">
+                <strong>Contact form not configured.</strong> Set <code>REACT_APP_FORMSPREE_ENDPOINT</code> in your environment (see README). The submit button is disabled until configured.
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -247,7 +257,7 @@ const Contact = () => {
 
               <Button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !isFormspreeConfigured}
                 className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 dark:from-blue-700 dark:to-emerald-700 dark:hover:from-blue-600 dark:hover:to-emerald-600 text-white font-medium py-3 text-lg transition-all duration-200 hover:shadow-lg"
               >
                 {isSubmitting ? (
