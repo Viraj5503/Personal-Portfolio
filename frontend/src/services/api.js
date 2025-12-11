@@ -18,7 +18,7 @@ import {
   experience,
   achievements,
   languages,
-} from './data/mockData';
+} from '../data/mockData';
 
 const FORMSPREE_ENDPOINT = process.env.REACT_APP_FORMSPREE_ENDPOINT || '';
 
