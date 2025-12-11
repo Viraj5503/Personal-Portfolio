@@ -1,120 +1,68 @@
-import axios from 'axios';
+/*
+  Frontend-only API shim
+  - Uses local mock data for portfolio sections so the frontend no longer depends on a backend API.
+  - Uses Formspree (or any similar service) for contact form submissions via an environment variable.
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API_BASE = `${BACKEND_URL}/api`;
+  Setup for Vercel (or local dev):
+  - Set `REACT_APP_FORMSPREE_ENDPOINT` to your Formspree URL (e.g. https://formspree.io/f/abcd1234)
 
-// Create axios instance with default config
-const api = axios.create({
-  baseURL: API_BASE,
-  timeout: 10000,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+*/
 
-// Request interceptor for logging
-api.interceptors.request.use(
-  (config) => {
-    console.log(`🚀 API Request: ${config.method?.toUpperCase()} ${config.url}`);
-    return config;
-  },
-  (error) => {
-    console.error('❌ API Request Error:', error);
-    return Promise.reject(error);
-  }
-);
+import {
+  personalInfo,
+  aboutContent,
+  projects,
+  skills,
+  education,
+  certifications,
+  experience,
+  achievements,
+  languages,
+} from './data/mockData';
 
-// Response interceptor for logging and error handling
-api.interceptors.response.use(
-  (response) => {
-    console.log(`✅ API Response: ${response.config.method?.toUpperCase()} ${response.config.url} - ${response.status}`);
-    return response;
-  },
-  (error) => {
-    console.error('❌ API Response Error:', error.response?.status, error.response?.data || error.message);
-    return Promise.reject(error);
-  }
-);
+const FORMSPREE_ENDPOINT = process.env.REACT_APP_FORMSPREE_ENDPOINT || '';
 
-// Portfolio API endpoints
+// Portfolio API (returns local mock data)
 export const portfolioApi = {
-  // Get personal information
-  getPersonalInfo: async () => {
-    const response = await api.get('/portfolio/personal');
-    return response.data;
-  },
-
-  // Get about information
-  getAboutInfo: async () => {
-    const response = await api.get('/portfolio/about');
-    return response.data;
-  },
-
-  // Get all projects
-  getProjects: async () => {
-    const response = await api.get('/portfolio/projects');
-    return response.data;
-  },
-
-  // Get specific project by ID
-  getProject: async (id) => {
-    const response = await api.get(`/portfolio/projects/${id}`);
-    return response.data;
-  },
-
-  // Get skills data
-  getSkills: async () => {
-    const response = await api.get('/portfolio/skills');
-    return response.data;
-  },
-
-  // Get education information
-  getEducation: async () => {
-    const response = await api.get('/portfolio/education');
-    return response.data;
-  },
-
-  // Get certifications
-  getCertifications: async () => {
-    const response = await api.get('/portfolio/certifications');
-    return response.data;
-  },
-
-  // Get work experience
-  getExperience: async () => {
-    const response = await api.get('/portfolio/experience');
-    return response.data;
-  },
-
-  // Get languages
-  getLanguages: async () => {
-    const response = await api.get('/portfolio/languages');
-    return response.data;
-  },
-
-  // Get achievements
-  getAchievements: async () => {
-    const response = await api.get('/portfolio/achievements');
-    return response.data;
-  },
+  getPersonalInfo: async () => ({ ...personalInfo }),
+  getAboutInfo: async () => ({ ...aboutContent }),
+  getProjects: async () => ([...projects]),
+  getProject: async (id) => projects.find((p) => String(p.id) === String(id)),
+  getSkills: async () => ({ ...skills }),
+  getEducation: async () => ([...education]),
+  getCertifications: async () => ([...certifications]),
+  getExperience: async () => ([...experience]),
+  getLanguages: async () => ([...languages]),
+  getAchievements: async () => ([...achievements]),
 };
 
-// Contact API endpoints
+// Contact API (submits directly to Formspree)
 export const contactApi = {
-  // Submit contact form
   submitContactForm: async (formData) => {
-    const response = await api.post('/contact/', formData);
-    return response.data;
+    if (!FORMSPREE_ENDPOINT) {
+      throw new Error('Formspree endpoint not configured. Set REACT_APP_FORMSPREE_ENDPOINT in your environment.');
+    }
+
+    // Formspree accepts JSON or form-encoded data. We'll send JSON.
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(`Form submission failed: ${response.status} ${text}`);
+    }
+
+    // Formspree returns JSON with `ok: true` on success for the new endpoints
+    try {
+      const data = await response.json();
+      return data;
+    } catch (err) {
+      return { message: 'Message sent (no JSON response)' };
+    }
   },
 };
 
-// Health check endpoint
-export const healthApi = {
-  // Check API health
-  checkHealth: async () => {
-    const response = await api.get('/health');
-    return response.data;
-  },
-};
-
-export default api;
+export default { portfolioApi, contactApi };

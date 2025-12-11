@@ -8,7 +8,9 @@ export const personalInfo = {
   linkedin: "www.linkedin.com/in/virajdalsania",
   github: "https://github.com/Viraj5503",
   location: "Dresden, Germany",
-  profileImage: "https://customer-assets.emergentagent.com/job_viraj-analytics/artifacts/qlolufqr_WhatsApp%20Image%202025-09-16%20at%2000.42.38.jpeg"
+  // Use a local asset so the site doesn't rely on external/back-end image hosting.
+  // Place your photo at `frontend/public/assets/profile.jpg` and it will be served at /assets/profile.jpg
+  profileImage: "/assets/profile.jpg"
 };
 
 export const aboutContent = {
