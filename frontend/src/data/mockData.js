@@ -8,9 +8,10 @@ export const personalInfo = {
   linkedin: "www.linkedin.com/in/virajdalsania",
   github: "https://github.com/Viraj5503",
   location: "Dresden, Germany",
-  // Use a local asset so the site doesn't rely on external/back-end image hosting.
-  // Place your photo at `frontend/public/assets/profile.jpg` and it will be served at /assets/profile.jpg
-  profileImage: "/assets/profile.jpg"
+  // Use a local asset: `frontend/public/assets/profile.jpg`
+  // Until you add your photo, this uses a temporary placeholder image.
+  // Once you save your photo as profile.jpg, replace the URL below with: "/assets/profile.jpg"
+  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=900&fit=crop"
 };
 
 export const aboutContent = {
