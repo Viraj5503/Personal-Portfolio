@@ -60,7 +60,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-white dark:bg-slate-900 transition-colors duration-300">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-16">
-          <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 mb-4 transition-colors duration-300">
+          <Badge variant="outline" className="px-4 py-2 text-sm font-medium border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-400 mb-4 transition-colors duration-300">
             Get In Touch
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 dark:text-white mb-6 transition-colors duration-300">
@@ -77,7 +77,7 @@ const Contact = () => {
         <div className="space-y-8">
           {/* Contact Information */}
           <div className="space-y-8">
-            <Card className="p-8 shadow-xl border border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-900 transition-colors duration-300 rounded-2xl">
+            <Card className="p-8 shadow-lg border-0 bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-slate-800 dark:to-slate-800 transition-colors duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-emerald-500 text-white">
                   <MessageCircle className="w-6 h-6" />
@@ -92,7 +92,7 @@ const Contact = () => {
                     href={method.href}
                     target={method.href.startsWith('http') ? '_blank' : '_self'}
                     rel={method.href.startsWith('http') ? 'noopener noreferrer' : ''}
-                    className="flex items-center gap-4 p-5 bg-white/60 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:shadow-lg transition transform hover:-translate-y-0.5 duration-200 group"
+                    className="flex items-center gap-4 p-4 bg-white dark:bg-slate-700 rounded-lg hover:shadow-md dark:hover:shadow-lg transition-shadow duration-200 group"
                   >
                     <div className={`${method.color} group-hover:scale-110 transition-transform`}>
                       {method.icon}
@@ -106,8 +106,8 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-8 shadow-xl border border-slate-100 dark:border-slate-700 bg-slate-900 text-white transition-colors duration-300 rounded-2xl">
-              <h3 className="text-xl font-semibold mb-4">Available For</h3>
+            <Card className="p-8 shadow-lg border-0 bg-gradient-to-r from-slate-800 to-slate-900 dark:from-slate-950 dark:to-slate-900 text-white transition-colors duration-300">
+              <h3 className="text-xl font-bold mb-4">Available For</h3>
               <div className="space-y-3">
                 {[
                   'Research Collaborations',
