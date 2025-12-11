@@ -2,11 +2,9 @@
 
 import React from 'react';
 import { Card } from './ui/card';
-import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Mail, Phone, MapPin, Linkedin, Github, MessageCircle } from 'lucide-react';
 import { usePersonalInfo } from '../hooks/usePortfolioData';
-import { isFormspreeConfigured } from '../services/api'; // keep flag for info
 import LoadingSpinner from './LoadingSpinner';
 import { ErrorMessage } from './ErrorBoundary';
 
@@ -76,7 +74,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="space-y-8">
           {/* Contact Information */}
           <div className="space-y-8">
             <Card className="p-8 shadow-lg border-0 bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-slate-800 dark:to-slate-800 transition-colors duration-300">
@@ -127,30 +125,7 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* Contact Actions (email / phone) */}
-          <Card className="p-8 shadow-lg border-0 bg-white dark:bg-slate-800 transition-colors duration-300">
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 transition-colors duration-300">Contact</h3>
-
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">Email or call me directly — clicking the buttons below will open your mail client or phone dialer.</p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-lg shadow hover:opacity-95"
-              >
-                <Mail className="w-5 h-5 mr-2" />
-                Email Me
-              </a>
-
-              <a
-                href={`tel:${personalInfo.phone}`}
-                className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white rounded-lg shadow"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                Call Me
-              </a>
-            </div>
-          </Card>
+          {/* (Contact form removed) */}
         </div>
       </div>
     </section>
