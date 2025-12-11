@@ -1,69 +1,18 @@
 // frontend/src/components/Contact.jsx
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
 import { Badge } from './ui/badge';
-import { useToast } from '../hooks/use-toast';
-import { Mail, Phone, MapPin, Linkedin, Github, Send, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, MessageCircle } from 'lucide-react';
 import { usePersonalInfo } from '../hooks/usePortfolioData';
-import { contactApi, isFormspreeConfigured } from '../services/api'; // This is correct
+import { isFormspreeConfigured } from '../services/api'; // keep flag for info
 import LoadingSpinner from './LoadingSpinner';
 import { ErrorMessage } from './ErrorBoundary';
 
 const Contact = () => {
   const { data: personalInfo, loading, error } = usePersonalInfo();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      if (!isFormspreeConfigured) {
-        // Defensive: don't attempt to submit if endpoint is missing.
-        throw new Error('Formspree endpoint not configured. Set REACT_APP_FORMSPREE_ENDPOINT in your environment (see README).');
-      }
-
-      // Pass the formData directly to the API function (Formspree)
-      const response = await contactApi.submitContactForm(formData);
-
-      toast({
-        title: "Message Sent! 🎉",
-        description: response.message || "Thank you for reaching out. I'll get back to you soon!",
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-
-    } catch (error) {
-      console.error('Contact form submission error:', error);
-
-      // Prefer thrown or response messages
-      const errorMessage = error?.response?.data?.detail || error?.message || "Failed to send message. Please try again later.";
-
-      toast({
-        title: "Error",
-        description: errorMessage,
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  // No contact form — contact via email or phone using the links below.
 
   if (loading) return <LoadingSpinner size="lg" message="Loading contact information..." />;
   if (error) return <ErrorMessage error={error} />;
@@ -178,101 +127,29 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Actions (email / phone) */}
           <Card className="p-8 shadow-lg border-0 bg-white dark:bg-slate-800 transition-colors duration-300">
-            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 transition-colors duration-300">Send a Message</h3>
-            
-            {/* If Formspree is not configured, show an inline notice and disable submit */}
-            {!isFormspreeConfigured && (
-              <div className="mb-4 p-4 rounded-md bg-yellow-50 dark:bg-yellow-900 text-yellow-800">
-                <strong>Contact form not configured.</strong> Set <code>REACT_APP_FORMSPREE_ENDPOINT</code> in your environment (see README). The submit button is disabled until configured.
-              </div>
-            )}
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 transition-colors duration-300">Contact</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors duration-300">
-                    Name *
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Your full name"
-                    className="w-full dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:border-slate-600"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors duration-300">
-                    Email *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="your.email@example.com"
-                    className="w-full dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:border-slate-600"
-                  />
-                </div>
-              </div>
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">Email or call me directly — clicking the buttons below will open your mail client or phone dialer.</p>
 
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors duration-300">
-                  Subject *
-                </label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  required
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  placeholder="What would you like to discuss?"
-                  className="w-full dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:border-slate-600"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors duration-300">
-                  Message *
-                </label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  required
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  placeholder="Tell me about your project, research opportunity, or how we can collaborate..."
-                  rows={6}
-                  className="w-full dark:bg-slate-700 dark:text-white dark:placeholder-slate-400 dark:border-slate-600"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting || !isFormspreeConfigured}
-                className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 dark:from-blue-700 dark:to-emerald-700 dark:hover:from-blue-600 dark:hover:to-emerald-600 text-white font-medium py-3 text-lg transition-all duration-200 hover:shadow-lg"
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-lg shadow hover:opacity-95"
               >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Sending...
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center gap-2">
-                    <Send className="w-5 h-5" />
-                    Send Message
-                  </div>
-                )}
-              </Button>
-            </form>
+                <Mail className="w-5 h-5 mr-2" />
+                Email Me
+              </a>
+
+              <a
+                href={`tel:${personalInfo.phone}`}
+                className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-white rounded-lg shadow"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call Me
+              </a>
+            </div>
           </Card>
         </div>
       </div>

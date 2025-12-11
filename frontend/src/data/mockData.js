@@ -4,7 +4,7 @@ export const personalInfo = {
   title: "Computer Science Master's Student",
   subtitle: "Data Science & AI/ML Enthusiast | TU Dresden",
   email: "viraj.dalsania2003@gmail.com",
-  phone: "(+91) 9316471288",
+  phone: "+49 1743024601",
   linkedin: "www.linkedin.com/in/virajdalsania",
   github: "https://github.com/Viraj5503",
   location: "Dresden, Germany",
