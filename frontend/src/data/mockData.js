@@ -15,7 +15,7 @@ export const personalInfo = {
 };
 
 export const aboutContent = {
-  summary: "Computer Science Master's student at Technische Universität Dresden with strong interest in Data Science and AI/ML applications. Passionate about exploring emerging AI technologies, conducting analytical research, and developing innovative solutions for complex data problems. Experienced in sentiment analysis, natural language processing, time-series forecasting, and anomaly detection with solid foundation in full-stack development gained through internship experience.",
+  summary: "Computer Science Master's student at Technische Universität Dresden, currently working as a Working Student at NXP Semiconductors, with strong interest in Data Science and AI/ML applications. Passionate about exploring emerging AI technologies, conducting analytical research, and developing innovative solutions for complex data problems. Experienced in sentiment analysis, natural language processing, time-series forecasting, and anomaly detection with solid foundation in full-stack development gained through internship experience.",
   highlights: [
     "9.69 CGPA in Bachelor's degree with Outstanding Distinction",
     "Multiple IBM Data Science certifications and continuous learning",
@@ -44,6 +44,26 @@ export const projects = [
     skills: ["Quantitative Finance", "Algorithmic Trading", "Machine Learning", "Time Series Analysis", "Feature Engineering"],
     category: "Machine Learning",
     repoUrl: "https://github.com/Viraj5503/Implementation-of-a-LightGBM-based-Long-Short-Trading-Strategy-for-Indian-Stocks"
+  },
+  {
+    id: 5,
+    title: "DataWhisper-AI",
+    subtitle: "START Hack 2026 - ZwickRoell Case",
+    type: "Hackathon",
+    duration: "March 2026 - March 2026",
+    description: "Developed an AI-powered analytics assistant for material testing data during START Hack 2026, enabling natural language interaction with complex lab datasets.",
+    challenge: "Build an end-to-end analytics system that can understand engineering questions in plain language, map them to structured data, and return reliable, explainable insights.",
+    approach: "Implemented an LLM-orchestrated pipeline for query understanding, semantic field mapping, MongoDB execution, statistical analysis with NumPy/SciPy, and insight generation with transparent reasoning and visual outputs.",
+    results: [
+      "Enabled natural language querying over complex material testing datasets",
+      "Delivered trends, comparisons, anomaly detection, and explainable insights",
+      "Built full-stack architecture with React frontend, FastAPI backend, and MongoDB",
+      "Added interactive visualizations and reasoning traces for engineering-focused decision support"
+    ],
+    technologies: ["React 18", "TypeScript", "Vite", "Tailwind CSS", "Radix UI", "Recharts", "TanStack Query", "Python FastAPI", "MongoDB", "LLM Gateway (OpenAI-compatible)"],
+    skills: ["Artificial Intelligence", "Large Language Models", "Natural Language Querying", "Data Analytics", "Full-Stack Development"],
+    category: "AI Analytics",
+    repoUrl: "https://github.com/Viraj5503/DataWhisper-AI"
   },
   {
     id: 2,
@@ -200,6 +220,13 @@ export const certifications = [
 ];
 
 export const experience = [
+  {
+    title: "RFSoC Digital Design and Verification",
+    company: "NXP Semiconductors",
+    location: "Dresden, Saxony, Germany (On-site)",
+    duration: "March 2026 - Present",
+    responsibilities: []
+  },
   {
     title: "Full Stack Web Developer Intern",
     company: "IIH Global",

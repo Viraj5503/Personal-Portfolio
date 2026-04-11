@@ -3,7 +3,7 @@ import { Card } from './ui/card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { ExternalLink, Github, TrendingUp, Brain, Database, Code } from 'lucide-react';
+import { Github, TrendingUp, Brain, Database, Code, Sparkles } from 'lucide-react';
 import { projects, personalInfo } from '../data/mockData';
 
 const Projects = () => {
@@ -13,6 +13,7 @@ const Projects = () => {
     'Machine Learning': <Brain className="w-5 h-5" />,
     'NLP & Deep Learning': <TrendingUp className="w-5 h-5" />,
     'IoT & AI': <Database className="w-5 h-5" />,
+    'AI Analytics': <Sparkles className="w-5 h-5" />,
     'Web Development': <Code className="w-5 h-5" />
   };
 
@@ -62,6 +63,11 @@ const Projects = () => {
                         {project.title}
                       </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 transition-colors duration-300">{project.duration}</p>
+                      {project.type && (
+                        <Badge variant="outline" className="mt-2 text-[10px] border-amber-300 text-amber-700 dark:border-amber-600 dark:text-amber-300 transition-colors duration-300">
+                          {project.type}
+                        </Badge>
+                      )}
                       <Badge variant="secondary" className="mt-2 text-xs dark:bg-slate-700 dark:text-slate-300 transition-colors duration-300">
                         {project.category}
                       </Badge>
@@ -92,6 +98,11 @@ const Projects = () => {
                       <Badge variant="outline" className="px-3 py-1 dark:border-slate-600 dark:text-slate-300 transition-colors duration-300">
                         {selectedProject.duration}
                       </Badge>
+                      {selectedProject.type && (
+                        <Badge variant="outline" className="px-3 py-1 border-amber-300 text-amber-700 dark:border-amber-600 dark:text-amber-300 transition-colors duration-300">
+                          {selectedProject.type}
+                        </Badge>
+                      )}
                       <Badge className="px-3 py-1 bg-gradient-to-r from-blue-500 to-emerald-500">
                         {selectedProject.category}
                       </Badge>
@@ -164,7 +175,7 @@ const Projects = () => {
                     <div className="mt-8 p-6 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-700 dark:to-slate-800 rounded-lg transition-colors duration-300">
                       <h4 className="font-semibold text-slate-800 dark:text-white mb-3 transition-colors duration-300">Learning Outcomes</h4>
                       <p className="text-slate-600 dark:text-slate-300 leading-relaxed transition-colors duration-300">
-                        This project enhanced my understanding of {selectedProject.category.toLowerCase()} applications and provided hands-on experience with industry-standard tools and methodologies. The work demonstrates practical problem-solving skills and the ability to translate theoretical knowledge into real-world solutions.
+                        This project enhanced my understanding of {selectedProject.category} applications and provided hands-on experience with industry-standard tools and methodologies. The work demonstrates practical problem-solving skills and the ability to translate theoretical knowledge into real-world solutions.
                       </p>
                     </div>
                   </div>
