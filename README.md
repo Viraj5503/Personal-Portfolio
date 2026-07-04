@@ -1,61 +1,80 @@
 # Personal Portfolio Website
 
-A modern, responsive portfolio website built to showcase my projects, technical skills, and development journey as a Computer Science student.
+A production-deployed portfolio website presenting my academic, research, and project work as a Computer Science student, with a strong focus on **AI/ML, Data Science, software engineering, and applied problem-solving**.
 
 **Live Website:** [virajdalsania.vercel.app](https://virajdalsania.vercel.app/)  
 **Repository:** [Viraj5503/Personal-Portfolio](https://github.com/Viraj5503/Personal-Portfolio)
 
 ---
 
-## About the Project
+## Overview
 
-This portfolio is designed as a central place to present:
+This portfolio serves as a central technical profile that highlights:
 
-- My software and web development projects
-- Technical skills and tools I work with
-- Academic background and learning journey
-- Contact and professional profile links
+- Research-oriented and implementation-focused projects
+- Applied AI/ML and data science work
+- Software engineering and development experience
+- Education, certifications, and professional trajectory
+- Contact and collaboration channels
 
-The goal is to maintain a clean, performant, and recruiter-friendly web presence that reflects both technical capability and product-thinking.
+It is designed to be clean, responsive, and recruiter-friendly while maintaining technical depth.
 
 ---
 
-## Features
+## Key Highlights
 
-- Responsive, mobile-first UI
-- Project showcase section
-- Skills/technology highlights
-- Clean and professional visual design
-- Fast deployment with Vercel
-- Easy to customize and extend
+- **Responsive, modern UI** across desktop, tablet, and mobile
+- **Dark/Light theme support** with persistent preference via `localStorage`
+- **Structured project presentation** with overview and technical detail views
+- **Professional profile sections**: about, skills, education, experience, certifications
+- **Contact integration** using Formspree
+- **Deployed on Vercel** for reliable and fast delivery
+
+---
+
+## Project Scope
+
+The showcased work is **multi-domain**, including areas such as:
+
+- Artificial Intelligence & Machine Learning
+- Natural Language Processing / Deep Learning
+- Data Science & Analytics
+- IoT + AI applications
+- Software and full-stack engineering applications
+
+> This repository is not limited to “web development projects”; the portfolio presents broader technical work from academic and applied contexts.
 
 ---
 
 ## Tech Stack
 
-Based on repository language composition:
+Based on repository composition and implementation:
 
-- **JavaScript** (primary)
-- **Python**
+- **JavaScript** (primary frontend implementation)
+- **Python** (project and data/ML-oriented ecosystem context)
 - **HTML5**
 - **CSS3**
 
-Additional ecosystem tooling may include:
+Platform and tooling:
 
-- Git & GitHub for version control
-- Vercel for hosting and deployment
+- **React** (frontend app structure)
+- **Git & GitHub** (version control and collaboration)
+- **Vercel** (deployment and hosting)
+- **Formspree** (contact form handling)
 
 ---
 
-## Project Structure
-
-> The exact structure may evolve over time. A typical structure for this project is:
+## Repository Structure
 
 ```bash
 Personal-Portfolio/
-├── frontend/           # React frontend application
+├── frontend/                 # Main frontend application
 │   ├── public/
 │   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── data/
+│   │   └── ...
 │   └── ...
 ├── README.md
 └── ...
@@ -63,7 +82,7 @@ Personal-Portfolio/
 
 ---
 
-## Getting Started
+## Local Development
 
 ### Prerequisites
 
@@ -71,96 +90,71 @@ Personal-Portfolio/
 - Node.js (LTS recommended)
 - npm
 
-### Clone the Repository
+### Setup
 
 ```bash
 git clone https://github.com/Viraj5503/Personal-Portfolio.git
-cd Personal-Portfolio
-```
-
-### Install Dependencies
-
-```bash
-cd frontend
+cd Personal-Portfolio/frontend
 npm install
-```
-
-### Run Locally
-
-```bash
 npm start
 ```
 
-Then open: [http://localhost:3000](http://localhost:3000)
+Open: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## Environment Variables
+## Environment Configuration
 
-Create a file named `.env.local` inside the `frontend/` directory:
+Create `frontend/.env.local`:
 
 ```env
 REACT_APP_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
 ```
 
-This is used by the contact form for email submissions.
+This variable is used for portfolio contact submissions.
 
 ---
 
 ## Deployment
 
-This portfolio is deployed on **Vercel**.
+This site is hosted on **Vercel**.
 
-### Live URL
-
+**Production URL:**  
 [https://virajdalsania.vercel.app/](https://virajdalsania.vercel.app/)
 
-### Typical Deployment Flow
+Typical flow:
 
-1. Push changes to GitHub
-2. Vercel detects updates
-3. New deployment is built and published
+1. Push updates to GitHub
+2. Vercel detects new commits
+3. Build + deployment run automatically
 
 ---
 
 ## Engineering Notes
 
-This project emphasizes practical frontend engineering practices:
+This portfolio emphasizes practical software quality attributes:
 
-- Semantic and accessible UI structure
-- Responsive layouts across devices
-- Reusable, maintainable component design
-- Performance-conscious client-side rendering
-- Clean project organization and documentation
-
----
-
-## Roadmap
-
-Planned improvements:
-
-- Add dark/light theme enhancement and transitions
-- Add richer project filtering and tagging
-- Add blog or technical notes section
-- Improve Lighthouse performance and accessibility scores
-- Add automated checks (lint/test/build) in CI
+- Maintainable component-based architecture
+- Semantic and accessible UI patterns
+- Theme-aware styling and smooth UX transitions
+- Clear separation of content and presentation concerns
+- Extensible structure for future project additions
 
 ---
 
-## Contributing
+## Future Enhancements
 
-Contributions and suggestions are welcome.
-
-1. Fork the repository
-2. Create a branch (`feature/your-feature-name`)
-3. Commit your changes
-4. Open a pull request
+- Enhanced project filtering/search by domain and technology
+- Additional technical write-ups/case-study pages
+- CI-based lint/build checks
+- Performance and accessibility score optimization
+- Expanded analytics and engagement insights
 
 ---
 
 ## Contact
 
-For collaborations, internships, or opportunities:
+For collaboration, internships, research discussions, or opportunities:
 
 - Portfolio: [virajdalsania.vercel.app](https://virajdalsania.vercel.app/)
 - GitHub: [@Viraj5503](https://github.com/Viraj5503)
@@ -169,6 +163,6 @@ For collaborations, internships, or opportunities:
 
 ## License
 
-This project currently has no explicit license.
+No explicit license is currently defined.
 
-If you plan to open source it publicly for reuse, consider adding an MIT License.
+If you want others to reuse parts of this project, consider adding an MIT License.
