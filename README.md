@@ -1,63 +1,174 @@
-# Personal Portfolio (Frontend-only)
+# Personal Portfolio Website
 
-This repository has been converted to a frontend-only project to make deployment simple and fast on Vercel. No backend server is required.
+A modern, responsive portfolio website built to showcase my projects, technical skills, and development journey as a Computer Science student.
 
-## What changed
-- Frontend now uses local mock data (`frontend/src/data/mockData.js`) — all portfolio content is self-contained.
-- Contact form submits directly to Formspree (free service, no server needed).
-- Backend Python files were completely removed.
+**Live Website:** [virajdalsania.vercel.app](https://virajdalsania.vercel.app/)  
+**Repository:** [Viraj5503/Personal-Portfolio](https://github.com/Viraj5503/Personal-Portfolio)
 
-## Setup Instructions
+---
 
-### Local Development
+## About the Project
 
-1. **Add your profile photo:**
-   - Save your photo as `profile.jpg` to: `frontend/public/assets/profile.jpg`
-   - The app will display it in the Hero section automatically.
+This portfolio is designed as a central place to present:
 
-2. **Install dependencies and run:**
-   ```bash
-   cd frontend
-   npm install
-   npm start
-   ```
-   The app runs on `http://localhost:3000`.
+- My software and web development projects
+- Technical skills and tools I work with
+- Academic background and learning journey
+- Contact and professional profile links
 
-### Formspree Setup (for contact form)
+The goal is to maintain a clean, performant, and recruiter-friendly web presence that reflects both technical capability and product-thinking.
 
-The contact form sends emails directly from the frontend using **Formspree** (free, no backend needed).
-
-1. Go to https://formspree.io and sign up for a free account.
-2. Create a new form and copy the form endpoint (e.g., `https://formspree.io/f/abcd1234`).
-3. Create a `.env.local` file in the `frontend/` directory with:
-   ```
-   REACT_APP_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
-   ```
-4. Test locally by running `npm start` and submitting a test message.
-5. Check your email (the one associated with your Formspree account) for the test submission.
-
-### Deploy to Vercel
-
-1. Push your repo to GitHub (already done ✓).
-2. Go to https://vercel.com and connect your GitHub repository.
-3. Set project root to `frontend/`.
-4. In **Environment Variables**, add:
-   ```
-   REACT_APP_FORMSPREE_ENDPOINT = https://formspree.io/f/your_form_id
-   ```
-5. Deploy!
+---
 
 ## Features
 
-- **Dark Mode Toggle**: Enabled in the header; persists to localStorage.
-- **Responsive Design**: Works on desktop, tablet, and mobile.
-- **Fast Load**: No backend dependency — loads in milliseconds on Vercel.
-- **Contact Form**: Direct email submission via Formspree.
+- Responsive, mobile-first UI
+- Project showcase section
+- Skills/technology highlights
+- Clean and professional visual design
+- Fast deployment with Vercel
+- Easy to customize and extend
 
-## Troubleshooting
+---
 
-- **Contact form not working?** Ensure `REACT_APP_FORMSPREE_ENDPOINT` is set and matches your Formspree form ID.
-- **Photo not showing?** Make sure `frontend/public/assets/profile.jpg` exists.
-- **Build errors?** Run `npm install` in the `frontend/` directory to ensure all dependencies are installed.
+## Tech Stack
 
-Enjoy your fast, serverless portfolio! 🚀
+Based on repository language composition:
+
+- **JavaScript** (primary)
+- **Python**
+- **HTML5**
+- **CSS3**
+
+Additional ecosystem tooling may include:
+
+- Git & GitHub for version control
+- Vercel for hosting and deployment
+
+---
+
+## Project Structure
+
+> The exact structure may evolve over time. A typical structure for this project is:
+
+```bash
+Personal-Portfolio/
+├── frontend/           # React frontend application
+│   ├── public/
+│   ├── src/
+│   └── ...
+├── README.md
+└── ...
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Git
+- Node.js (LTS recommended)
+- npm
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Viraj5503/Personal-Portfolio.git
+cd Personal-Portfolio
+```
+
+### Install Dependencies
+
+```bash
+cd frontend
+npm install
+```
+
+### Run Locally
+
+```bash
+npm start
+```
+
+Then open: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Environment Variables
+
+Create a file named `.env.local` inside the `frontend/` directory:
+
+```env
+REACT_APP_FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
+```
+
+This is used by the contact form for email submissions.
+
+---
+
+## Deployment
+
+This portfolio is deployed on **Vercel**.
+
+### Live URL
+
+[https://virajdalsania.vercel.app/](https://virajdalsania.vercel.app/)
+
+### Typical Deployment Flow
+
+1. Push changes to GitHub
+2. Vercel detects updates
+3. New deployment is built and published
+
+---
+
+## Engineering Notes
+
+This project emphasizes practical frontend engineering practices:
+
+- Semantic and accessible UI structure
+- Responsive layouts across devices
+- Reusable, maintainable component design
+- Performance-conscious client-side rendering
+- Clean project organization and documentation
+
+---
+
+## Roadmap
+
+Planned improvements:
+
+- Add dark/light theme enhancement and transitions
+- Add richer project filtering and tagging
+- Add blog or technical notes section
+- Improve Lighthouse performance and accessibility scores
+- Add automated checks (lint/test/build) in CI
+
+---
+
+## Contributing
+
+Contributions and suggestions are welcome.
+
+1. Fork the repository
+2. Create a branch (`feature/your-feature-name`)
+3. Commit your changes
+4. Open a pull request
+
+---
+
+## Contact
+
+For collaborations, internships, or opportunities:
+
+- Portfolio: [virajdalsania.vercel.app](https://virajdalsania.vercel.app/)
+- GitHub: [@Viraj5503](https://github.com/Viraj5503)
+
+---
+
+## License
+
+This project currently has no explicit license.
+
+If you plan to open source it publicly for reuse, consider adding an MIT License.
